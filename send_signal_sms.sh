@@ -2,7 +2,7 @@
 
 # Параметры Signal API
 SIGNAL_API_URL="http://localhost:8080/v2/send"  # URL Signal API
-SIGNAL_NUMBER="+380970613096"                       # Номер, используемый для отправки
+SIGNAL_NUMBER="+380XXXXXXXXXX"                       # Номер, используемый для отправки
 
 # Директория для чтения SMS-сообщений
 SMS_DIR="/tmp/sms"
