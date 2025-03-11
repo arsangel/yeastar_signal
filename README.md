@@ -38,3 +38,35 @@ Asterisk Management Interface (AMI):
 	Для интеграции с Signal Messenger используется проект signal-cli-rest-api, предоставляющий REST API для взаимодействия с Signal.
 Эти требования и шаги обеспечат корректную работу системы по приему и отправке SMS-сообщений через шлюзы Yeastar TG-Series с последующей пересылкой в Signal Messenger.
 Обязательно необходимо произвести установку и зарегистрировать устройство, ссылка на проект https://github.com/bbernhard/signal-cli-rest-api
+## get_sms.sh Настройка и запуск.
+Параметры скрипта:
+AMI_HOST="172.16.3.30" адрес шлюза yestar
+AMI_PORT=5038 порт на котором работает Asterisk AMI 
+AMI_USER="apiuser" логин пользователя AMI в Asterisk который имеет право читать сообщения 
+AMI_PASS="apipass" пароль соответственно
+
+Делаем исполняемым +x get_sms.sh
+Запуск скрипта: ./get_sms.sh
+Запуск скрипта в режиме демона: ./get_sms.sh &
+
+После запуска скрипта работоспособность связки со шлюзом можно проверить отправив смс на номер шлюза после чего в дириктории /tmp/sms буден создан текстовый файл.
+Логирует события и обработку /tmp/ami_events.log
+
+Поиск запущенного процесса get_sms.sh: ps aux | grep get_sms
+
+## send_signal_sms.sh Настройка и запуск
+Параметры скрипта:
+SIGNAL_NUMBER="+3803XXXXXXX" Номер телефона на который отправлять сообщения в Signal
+
+Делаем исполняемым +x ./send_signal_sms.sh
+Запуск скрипта: ./send_signal_sms.sh
+Запуск скрипта в режиме демона: ./send_signal_sms.sh &
+
+После запуска скрипт прочитывает файлы в /tmp/sms и удаляет их. Отправляя необходимое на Signal
+
+## Asterisk AMI напоминания...
+/etc/asterisk/manager.conf конфигурационный файл.
+asterisk -rvvvvvvvvv ввод CLI
+AsterCLI> manager show user apiuser "права и полномочия пользователя"
+
+
