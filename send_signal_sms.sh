@@ -44,7 +44,7 @@ while true; do
 {
     "message": "$FULL_MESSAGE",
     "number": "$SIGNAL_NUMBER",
-    "recipients": ["$SENDER"]
+    "recipients": ["$SIGNAL_NUMBER"]
 }
 EOF
                     )
