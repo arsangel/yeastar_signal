@@ -40,6 +40,8 @@ Asterisk Management Interface (AMI):
 
  Для обеспечения изоляции и упрощения развертывания компонентов системы необходимо установить Docker на сервере. 
 
+ Ссылка на офф., ресурс https://docs.docker.com/engine/install/
+
 2.	Signal Messenger REST API:
 
  Для интеграции с Signal Messenger используется проект signal-cli-rest-api, предоставляющий REST API для взаимодействия с Signal.
